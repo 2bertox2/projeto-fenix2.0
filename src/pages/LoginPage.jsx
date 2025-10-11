@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // A NOSSA SENHA "SECRETA" - Troque '1234' pelo número que você quiser
-const SENHA_CORRETA = '1234';
+const SENHA_CORRETA = '060307';
 
 function LoginPage() {
   const [password, setPassword] = useState('');
