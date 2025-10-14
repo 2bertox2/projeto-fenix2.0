@@ -856,3 +856,27 @@ header {
     padding-top: 10px;
   }
 }
+
+/* --- Correção final para os botões de rádio sobrepostos no mobile --- */
+
+@media (max-width: 768px) {
+  /*
+    Esta regra se aplica especificamente ao container dos botões
+    "Peguei" e "Emprestei".
+  */
+  .radio-group {
+    flex-direction: column; /* Força o empilhamento vertical */
+    align-items: flex-start; /* Alinha os itens à esquerda, um embaixo do outro */
+    gap: 15px;               /* Adiciona um espaçamento vertical entre eles */
+  }
+
+  /*
+    Garante que cada botão de rádio e seu texto fiquem
+    perfeitamente alinhados um com o outro.
+  */
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacinho entre o círculo e o texto */
+  }
+}
