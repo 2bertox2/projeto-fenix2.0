@@ -751,3 +751,86 @@ header {
   display: flex;
   align-items: center;
 }
+
+/* --- Estilos para o Menu Responsivo --- */
+
+/* Por padrão (Desktop), o menu hambúrguer e o menu mobile ficam escondidos */
+.hamburger-menu,
+.mobile-nav {
+  display: none;
+}
+
+/* Quando a tela for menor que 768px (tablets e celulares)... */
+@media (max-width: 768px) {
+  /* 1. Escondemos o menu de desktop */
+  .desktop-nav {
+    display: none;
+  }
+
+  /* 2. Mostramos o botão hambúrguer */
+  .hamburger-menu {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 2em; /* Tamanho do ícone */
+    color: #333;
+    cursor: pointer;
+    z-index: 1001; /* Garante que ele fique na frente de tudo */
+  }
+
+  /* 3. Estilizamos o menu lateral (mobile) */
+  .mobile-nav {
+    display: flex;
+    flex-direction: column; /* Links um embaixo do outro */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    position: fixed; /* Fica fixo na tela, mesmo com rolagem */
+    top: 0;
+    right: 0;
+    width: 70%; /* Ocupa 70% da largura da tela */
+    height: 100vh; /* Ocupa 100% da altura */
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    
+    /* Por padrão, fica escondido para fora da tela */
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  /* 4. Quando a classe 'open' é adicionada, o menu desliza para dentro da tela */
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+
+  /* 5. Estilo dos links dentro do menu mobile */
+  .mobile-nav a {
+    font-size: 1.5em;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+  .mobile-nav a.active {
+    color: #3498db;
+    font-weight: bold;
+  }
+  .mobile-nav .logout-btn {
+    margin-top: 20px; /* Dá um espaço acima do botão sair */
+    font-size: 1.2em;
+  }
+}
+
+/* --- Correção para remover a barra de rolagem horizontal no mobile --- */
+
+@media (max-width: 768px) {
+  .app-container {
+    /* Reduz o espaçamento nas laterais para que o container caiba na tela */
+    margin: 20px 15px; /* 20px em cima/baixo, 15px nas laterais */
+    padding: 15px;    /* Reduz também o preenchimento interno */
+  }
+}
