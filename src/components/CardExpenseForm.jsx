@@ -11,12 +11,7 @@ function CardExpenseForm({ cardId, onAddExpense }) {
       alert('Preencha a descrição e o valor.');
       return;
     }
-    onAddExpense({
-      description,
-      amount: parseFloat(amount),
-      card_id: cardId,
-    });
-    // Limpa o formulário
+    onAddExpense({ description, amount: parseFloat(amount), card_id: cardId });
     setDescription('');
     setAmount('');
   };
@@ -25,15 +20,7 @@ function CardExpenseForm({ cardId, onAddExpense }) {
     <form onSubmit={handleSubmit} className="card-expense-form">
       <h4>Novo Gasto no Cartão</h4>
       <div className="form-row">
-        <div className="form-field description-field">
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Descrição do gasto"
-            required
-          />
-        </div>
+        <div className="form-field description-field"><input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Descrição do gasto" required /></div>
         <div className="form-field">
           <CurrencyInput
             name="expense-amount"
@@ -43,6 +30,7 @@ function CardExpenseForm({ cardId, onAddExpense }) {
             intlConfig={{ locale: 'pt-BR', currency: 'BRL' }}
             className="currency-input"
             required
+            decimalScale={2} // <-- A CORREÇÃO ESTÁ AQUI
           />
         </div>
         <button type="submit">Adicionar</button>
