@@ -834,3 +834,25 @@ header {
     padding: 15px;    /* Reduz também o preenchimento interno */
   }
 }
+
+/* --- Correção para o formulário de Empréstimos no mobile --- */
+
+@media (max-width: 768px) {
+  /*
+    Esta regra se aplica à classe que usamos nos nossos formulários.
+    Ela força as linhas a se tornarem colunas em telas pequenas.
+  */
+  .recurring-form .form-row {
+    flex-direction: column; /* A mágica acontece aqui: muda de linha para coluna */
+    gap: 15px;             /* Ajusta o espaçamento vertical entre os campos */
+    align-items: stretch;  /* Garante que todos os campos tenham a mesma largura */
+  }
+
+  /*
+    Garante que o container do "Tipo" (Peguei/Emprestei)
+    tenha espaço suficiente e não amasse os botões.
+  */
+  .recurring-form .radio-group-container {
+    padding-top: 10px;
+  }
+}
